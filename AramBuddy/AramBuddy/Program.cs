@@ -29,6 +29,7 @@ namespace AramBuddy
     {
         public static Dictionary<string, string[]> CurrentPatchs = new Dictionary<string, string[]>
             {
+            {"6.23", new [] {"MetaSrc", "Default"}},
             };
 
         public static List<BuildServices> BuildsServices = new List<BuildServices>();
