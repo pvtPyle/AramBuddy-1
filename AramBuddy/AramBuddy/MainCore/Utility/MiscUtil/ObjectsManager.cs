@@ -44,7 +44,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                                 .Where(o => o.Name.Equals("bardhealthshrine", StringComparison.CurrentCultureIgnoreCase) && o.IsAlly && o.IsValid && !o.IsDead && !HealthRelics.Contains(o)))
                         {
                             HealthRelics.Add(bardhs);
-                            Logger.Send("Added " + bardhs.Name);
+                            if (Config.EnableDebug)
+                                Logger.Send("Added " + bardhs.Name);
                         }
 
                         // Removes HealthRelics and Enemy Traps.
@@ -84,7 +85,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                 if (ZacPassiveNames.Contains(gameObject.Name) && !ZacPassives.Contains(gameObject) && Player.Instance.Hero == Champion.Zac)
                 {
                     ZacPassives.Add(gameObject);
-                    Logger.Send("Create " + gameObject.Name);
+                    if (Config.EnableDebug)
+                        Logger.Send("Create " + gameObject.Name);
                 }
             }
 
@@ -95,7 +97,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                 {
                     var trap = new traps { Trap = caster, IsSpecial = false };
                     EnemyTraps.Add(trap);
-                    Logger.Send("Create " + sender.Name);
+                    if (Config.EnableDebug)
+                        Logger.Send("Create " + sender.Name);
                 } /*
                 if (SpecialTrapsNames.Contains(caster.Name) && caster.IsEnemy)
                 {
@@ -107,7 +110,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
             if (sender.Name.ToLower().Contains("healthrelic"))
             {
                 HealthRelics.Add(sender);
-                Logger.Send("Create " + sender.Name);
+                if (Config.EnableDebug)
+                    Logger.Send("Create " + sender.Name);
             }
         }
 
@@ -136,7 +140,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                 if (ZacPassiveNames.Contains(gameObject.Name) && ZacPassives.Contains(gameObject))
                 {
                     ZacPassives.Remove(gameObject);
-                    Logger.Send("Delete " + gameObject.Name);
+                    if (Config.EnableDebug)
+                        Logger.Send("Delete " + gameObject.Name);
                 }
             }
 
@@ -148,7 +153,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                 if (EnemyTraps.Contains(trap) && trap.Trap.IsEnemy)
                 {
                     EnemyTraps.Remove(trap);
-                    Logger.Send("Delete " + sender.Name);
+                    if (Config.EnableDebug)
+                        Logger.Send("Delete " + sender.Name);
                 } /*
                 if (EnemyTraps.Contains(Specialtrap) && caster.IsEnemy)
                 {
@@ -159,7 +165,8 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
             if (sender.Name.ToLower().Contains("healthrelic"))
             {
                 HealthRelics.Remove(sender);
-                Logger.Send("Delete " + sender.Name);
+                if (Config.EnableDebug)
+                    Logger.Send("Delete " + sender.Name);
             }
         }
 

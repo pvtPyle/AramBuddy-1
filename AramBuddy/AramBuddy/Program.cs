@@ -29,7 +29,6 @@ namespace AramBuddy
     {
         public static Dictionary<string, string[]> CurrentPatchs = new Dictionary<string, string[]>
             {
-            {"6.22.1", new []{ "MetaSrc", "LoLSkill", "KoreanBuilds", "Championgg", "User Builds" } },
             };
 
         public static List<BuildServices> BuildsServices = new List<BuildServices>();
@@ -76,8 +75,7 @@ namespace AramBuddy
             {
                 if (Game.MapId != GameMapId.HowlingAbyss)
                 {
-                    Logger.Send(Game.MapId + " IS NOT Supported By AramBuddy !", Logger.LogLevel.Warn);
-                    Chat.Print(Game.MapId + " IS NOT Supported By AramBuddy !");
+                    Logger.Send("AramBuddy only supports Howling Abyss. " + Game.MapId + " will never be supported", Logger.LogLevel.Error);
                     return;
                 }
 
@@ -88,7 +86,7 @@ namespace AramBuddy
                 {
                     if (eventArgs.Message.ToLower().Contains("portaio") && !CrashAIODetected)
                     {
-                        var warnmsg = "AramBuddy Does not Work With CrashAIO\nDisable CrashAIO In order to use AramBuddy !";
+                        var warnmsg = "AramBuddy does not work with CrashAIO\nDisable CrashAIO in order to use AramBuddy !";
                         Chat.Print(warnmsg);
                         Logger.Send(warnmsg, Logger.LogLevel.Warn);
                         Notifications.Show(new SimpleNotification("AramBuddy", warnmsg), 20000);
@@ -121,7 +119,7 @@ namespace AramBuddy
                 Player.OnPostIssueOrder += Player_OnPostIssueOrder;
                 Drawing.OnEndScene += Drawing_OnEndScene;
 
-                Logger.Send("Starting After: " + (TimeToStart / 1000).ToString("F1") + " Second/s", Logger.LogLevel.Event);
+                Logger.Send("Starting after: " + (TimeToStart / 1000).ToString("F1") + " Second/s", Logger.LogLevel.Event);
             }
             catch (Exception ex)
             {
@@ -150,7 +148,7 @@ namespace AramBuddy
                 if (QuitOnGameEnd)
                 {
                     var rnd = new Random().Next(15000, 30000) + Game.Ping;
-                    Logger.Send("Closing the Game in: " + (rnd / 1000).ToString("F1") + " Second/s", Logger.LogLevel.Event);
+                    Logger.Send("Closing the League of Legends in: " + (rnd / 1000).ToString("F1") + " Second/s", Logger.LogLevel.Event);
                     Core.DelayAction(() => Game.QuitGame(), rnd);
                 }
             }
@@ -192,7 +190,7 @@ namespace AramBuddy
                     catch (Exception)
                     {
                         CustomChamp = false;
-                        Logger.Send("There Is No Custom Plugin For " + Player.Instance.Hero, Logger.LogLevel.Warn);
+                        Logger.Send("There is no custom plugin for " + Player.Instance.Hero, Logger.LogLevel.Warn);
                     }
                 }
 
@@ -247,10 +245,7 @@ namespace AramBuddy
                         }
                     };
 
-                BuildMenu.AddLabel("MetaSrc: Very Good For Aram");
-                BuildMenu.AddLabel("Championgg: Decent For Aram");
-                BuildMenu.AddLabel("KoreanBuilds: Decent For Aram");
-                BuildMenu.AddLabel("LoLSkill: Not Good For Aram");
+                BuildMenu.AddLabel("MetaSrc: Only one available for now.");
 
                 var debug = MenuIni.CreateCheckBox("debug", "Enable Debugging Mode");
                 var activator = MenuIni.CreateCheckBox("activator", "Enable Built-In Activator");
@@ -349,10 +344,10 @@ namespace AramBuddy
                 SpellsMenu.Add("Flash", new CheckBox("Use Flash"));
                 SpellsMenu.Add("Cleanse", new CheckBox("Use Cleanse"));
 
-                InfoMenu.AddGroupLabel("Disabling In-Game Texture");
-                InfoMenu.AddLabel("To Disable In-Game Texture Type In Chat \"Disable Texture\"");
-                InfoMenu.AddLabel("To Enable In-Game Texture Type In Chat \"Enable Texture\"");
-                InfoMenu.AddLabel("Takes affect after 1 or 2 games");
+                InfoMenu.AddGroupLabel("Disabling in-game textures");
+                InfoMenu.AddLabel("To disable in-game textures type in chat: \"Disable Texture\"");
+                InfoMenu.AddLabel("To enable in-game textures type in chat: \"Enable Texture\"");
+                InfoMenu.AddLabel("Takes effect after 1 or 2 games.");
 
                 Console.Title = $"{Drawing.Width}x{Drawing.Height}";
 

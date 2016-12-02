@@ -199,7 +199,7 @@ namespace GenesisSpellLibrary
             catch (Exception ex)
             {
                 // Exception has been cought; Notify the user of the error and print the exception to the console
-                Logger.Send($"{Player.Instance.ChampionName} Is not Added to the Database yet.", ex, Logger.LogLevel.Error);
+                Logger.Send($"{Player.Instance.ChampionName} is not added to the Database yet.", ex, Logger.LogLevel.Error);
             }
         }
     }

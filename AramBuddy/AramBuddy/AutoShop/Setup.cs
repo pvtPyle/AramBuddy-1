@@ -52,7 +52,7 @@ namespace AramBuddy.AutoShop
         {
             try
             {
-                var service = Config.CurrentBuildService == "" ? "" : "\\" + Config.CurrentPatchUsed + "\\" + Config.CurrentBuildService;
+                var service = Config.CurrentBuildService == "" ? "" : "\\" + Config.CurrentPatchUsed;
                 Buy.CanShop = !Player.Instance.Buffs.Any(b => b.DisplayName.Equals("aramshopdisableplayer", StringComparison.CurrentCultureIgnoreCase)) || Player.Instance.IsDead;
                 //var useDefaultBuild = false;
 
@@ -101,8 +101,8 @@ namespace AramBuddy.AutoShop
                 if (Builds.Keys.All(b => b.CleanChampionName() != Player.Instance.CleanChampionName()))
                 {
                     // If not, warn the user
-                    Logger.Send("There are no builds for your champion. " + Player.Instance.ChampionName, Logger.LogLevel.Warn);
-                    if(service != "")
+                    Logger.Send("There are no builds for: " + Player.Instance.ChampionName, Logger.LogLevel.Warn);
+                    if(service != "" || Config.CurrentBuildService == "MetaSrc")
                         Build.GetBuildFromService();
                     else
                         UseDefaultBuild();
@@ -116,7 +116,7 @@ namespace AramBuddy.AutoShop
                 if (Builds.Any(b => b.Key.CleanChampionName() == Player.Instance.CleanChampionName()) && Builds.FirstOrDefault(b => b.Key.CleanChampionName() == Player.Instance.CleanChampionName()).Value.TryParseData(out CurrentChampionBuild))
                 {
                     // If the parse is successful, notify the user that the initialization process is finished
-                    Logger.Send(Config.CurrentPatchUsed + " " + Player.Instance.ChampionName + " Build Loaded !");
+                    Logger.Send(Config.CurrentPatchUsed + " " + Player.Instance.ChampionName + " Build loaded !");
                     Logger.Send("AutoShop has been fully and succesfully initialized!");
                     
                     // and set up event listeners
@@ -146,7 +146,7 @@ namespace AramBuddy.AutoShop
             {
                 // Creates Default Build for the AutoShop
                 Logger.Send("Creating default build path!", Logger.LogLevel.Warn);
-                Build.CreateDefualtBuild();
+                Build.CreateDefaultBuild();
             }
         }
 

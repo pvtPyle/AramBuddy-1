@@ -59,7 +59,8 @@ namespace AramBuddy.MainCore.Logics
                 if (porosnax != null && porosnax.IsOwned(Player.Instance) && porosnax.IsReady())
                 {
                     porosnax.Cast(ObjectsManager.ClosesetPoro);
-                    Logger.Send("Feeding ClosesetPoro");
+                    if (EnableDebug)
+                        Logger.Send("Feeding ClosesetPoro");
                 }
             }
 

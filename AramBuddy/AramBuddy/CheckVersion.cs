@@ -28,7 +28,7 @@ namespace AramBuddy
         {
             try
             {
-                Logger.Send("Checking For Updates..");
+                Logger.Send("Checking for Updates..");
                 var size = Drawing.Width <= 1280 || Drawing.Height <= 720 ? 10F : 40F;
                 text = new Text("ARAMBUDDY OUTDATED! PLEASE UPDATE!", new Font("Euphemia", size, FontStyle.Bold)) { Color = Color.White };
                 var WebClient = new WebClient();
@@ -37,8 +37,8 @@ namespace AramBuddy
                 {
                     if (args.Cancelled || args.Error != null)
                     {
-                        Logger.Send("Failed to get update Message.", Logger.LogLevel.Warn);
-                        Logger.Send("Wrong response, or request was cancelled.", Logger.LogLevel.Warn);
+                        Logger.Send("Failed to get update message.", Logger.LogLevel.Warn);
+                        Logger.Send("External server bad response.", Logger.LogLevel.Error);
                         Logger.Send(args.Error?.InnerException?.Message, Logger.LogLevel.Warn);
                         return;
                     }
@@ -55,13 +55,13 @@ namespace AramBuddy
                     if (args.Cancelled || args.Error != null)
                     {
                         Logger.Send("Failed to check live version.", Logger.LogLevel.Warn);
-                        Logger.Send("Wrong response, or request was cancelled.", Logger.LogLevel.Warn);
+                        Logger.Send("External server bad response.", Logger.LogLevel.Error);
                         Logger.Send(args.Error?.InnerException?.Message, Logger.LogLevel.Warn);
                         return;
                     }
                     if (args.Cancelled)
                     {
-                        Logger.Send("Wrong response, or request was cancelled.", Logger.LogLevel.Warn);
+                        Logger.Send("External server bad response.", Logger.LogLevel.Error);
                         Logger.Send(args.Error?.InnerException?.Message, Logger.LogLevel.Warn);
                         Console.WriteLine(args.Result);
                     }

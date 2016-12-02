@@ -16,12 +16,12 @@ namespace AramBuddy.MainCore.Utility
 
         private static readonly List<string> StartMsg = new List<string>
         {
-            "Hi", "Hello", "Greetings", "GL", "HF", "GLHF", "GL HF"
+            "hey guys", "gl hf", "gl hehe xd"
         };
 
         private static readonly List<string> EndMsg = new List<string>
         {
-            "GG", "WP", "GGWP", "GG WP"
+            "gg", "ggwp", "lol gg", "wp boys"
         };
 
         public static void Init()
@@ -68,7 +68,7 @@ namespace AramBuddy.MainCore.Utility
                     () =>
                         {
                             Chat.Say("/ff");
-                            Logger.Send("Voted Surrender With Team", Logger.LogLevel.Event);
+                            Logger.Send("Voted surrender with team", Logger.LogLevel.Event);
                         }, new Random().Next(1000, 5000));
             }
         }

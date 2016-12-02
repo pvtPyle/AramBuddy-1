@@ -24,11 +24,11 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                     text = date + " Event] ";
                     break;
                 case LogLevel.Info:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.White;
                     text = date + " Info] ";
                     break;
                 case LogLevel.Warn:
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     text = date + " Warn] ";
                     break;
                 case LogLevel.Error:
@@ -57,11 +57,11 @@ namespace AramBuddy.MainCore.Utility.MiscUtil
                     text = date + " Event] ";
                     break;
                 case LogLevel.Info:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.White;
                     text = date + " Info] ";
                     break;
                 case LogLevel.Warn:
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     text = date + " Warn] ";
                     break;
                 case LogLevel.Error:

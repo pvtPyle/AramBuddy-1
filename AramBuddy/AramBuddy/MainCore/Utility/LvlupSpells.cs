@@ -15,7 +15,7 @@ namespace AramBuddy.MainCore.Utility
         public static Levelset CurrentLevelset = new Levelset();
         private static string LevelSetDirectory { get { return $"{Misc.AramBuddyFolder}\\LevelSets\\{Config.CurrentPatchUsed}"; } }
         private static string LevelSetFile { get { return $"{Misc.AramBuddyFolder}\\LevelSets\\{Config.CurrentPatchUsed}\\{Player.Instance.CleanChampionName()}.json"; } }
-        private static string FileURL { get { return $"https://raw.githubusercontent.com/plsfixrito/AramBuddyBuilds/master/{Config.CurrentPatchUsed}/LevelSets/{Player.Instance.CleanChampionName()}.json"; } }
+        private static string FileURL { get { return $"https://raw.githubusercontent.com/plsfixrito/AramBuddy/master/DefaultBuilds/{Config.CurrentPatchUsed}/LevelSets/{Player.Instance.CleanChampionName()}.json"; } }
 
         internal static void Init()
         {
@@ -60,9 +60,7 @@ namespace AramBuddy.MainCore.Utility
                 {
                     if (args.Cancelled || args.Error != null)
                     {
-                        Logger.Send("Failed to create Levelset.", Logger.LogLevel.Warn);
-                        Logger.Send("Wrong response, or request was cancelled.", Logger.LogLevel.Warn);
-                        Logger.Send(args.Error?.InnerException?.Message, Logger.LogLevel.Warn);
+                        Logger.Send("Failed to create Levelset. Will be fixed soon.", Logger.LogLevel.Info);
                         return;
                     }
 
