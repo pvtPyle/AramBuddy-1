@@ -90,8 +90,8 @@ namespace AramBuddy.MainCore.Utility
 
         private static void Loading_OnLoadingComplete(EventArgs args)
         {
-            if(Game.Time <= 200 && EnableChat)
-                Core.DelayAction(() => Chat.Say("/all " + Start), new Random().Next(500 + Game.Ping, (5000 + Game.Ping) * 2));
+            //if(Game.Time <= 200 && EnableChat)
+            //    Core.DelayAction(() => Chat.Say("/all " + Start), new Random().Next(500 + Game.Ping, (5000 + Game.Ping) * 2));
         }
     }
 }

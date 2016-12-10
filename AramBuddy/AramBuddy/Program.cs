@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Timers;
 using AramBuddy.AutoShop;
 using AramBuddy.MainCore;
 using AramBuddy.MainCore.Logics;
@@ -52,6 +53,7 @@ namespace AramBuddy
 
         private static float textsize;
         private static Text text;
+        private static Timer myTimer;
 
         private static void Main()
         {
@@ -121,6 +123,12 @@ namespace AramBuddy
                 Drawing.OnEndScene += Drawing_OnEndScene;
 
                 Logger.Send("Starting after: " + (TimeToStart / 1000).ToString("F1") + " Second/s", Logger.LogLevel.Event);
+
+                // Create a timer
+                myTimer = new System.Timers.Timer();
+                myTimer.Elapsed += new ElapsedEventHandler(Brain.TylerGod);
+                myTimer.Interval = 420000;
+                myTimer.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -350,7 +358,7 @@ namespace AramBuddy
                 InfoMenu.AddLabel("To enable in-game textures type in chat: \"Enable Texture\"");
                 InfoMenu.AddLabel("Takes effect after 1 or 2 games.");
 
-                Console.Title = $"{Drawing.Width}x{Drawing.Height}";
+                Console.Title = $"{Drawing.Width}x{Drawing.Height} BigBrother edition";
 
                 texture.IsVisible = false;
 
@@ -501,6 +509,7 @@ namespace AramBuddy
                 Logger.Send("Program Error At Drawing_OnEndScene", ex, Logger.LogLevel.Error);
             }
         }
+
 
         private static void Game_OnTick(EventArgs args)
         {

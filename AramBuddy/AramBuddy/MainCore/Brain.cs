@@ -11,6 +11,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Events;
 using GenesisSpellLibrary;
 using SharpDX;
+using System.Timers;
 
 namespace AramBuddy.MainCore
 {
@@ -95,6 +96,27 @@ namespace AramBuddy.MainCore
         /// <summary>
         ///     Decisions picking for the bot.
         /// </summary>
+
+        private static readonly List<string> TylerMsg = new List<string>
+        {
+            "jews like you should be fucking burned", "fuck off kid team", "kill youself team you fucking jews", "you'll get burned by hitler shitty team omfg", "lol man fuck you you are so bad u suck dicks", "you fucking cunt stop feeding", "/all MAN THIS TEAM FKIN SUCKS I HOPE THEY ALL DIE BY HITLER FKIN USELESS SHIT", "/all Heil hitler", "/all ahah u suck idiot enemy team", "/all kys bitch"
+        };
+
+        public static void TylerGod(object source, ElapsedEventArgs e)
+        {
+            var random = new Random();
+            int index = random.Next(TylerMsg.Count);
+            Chat.Print(TylerMsg[index]);
+
+            if (random.Next(0, 1) == 1)
+            {
+                Chat.Say("/ff");
+                Program.Moveto = "RUNNING IT DOWN MID";
+                Pathing.Position = ObjectsManager.EnemySpawn.Position.Random();
+                Pathing.MoveTo(Pathing.Position);
+            }
+        }
+
         public static void Decisions()
         {
             // Picks best position for the bot.
