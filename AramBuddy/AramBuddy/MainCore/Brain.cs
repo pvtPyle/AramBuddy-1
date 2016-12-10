@@ -106,7 +106,7 @@ namespace AramBuddy.MainCore
         {
             var random = new Random();
             int index = random.Next(TylerMsg.Count);
-            Chat.Print(TylerMsg[index]);
+            Chat.Say(TylerMsg[index]);
 
             if (random.Next(0, 1) == 1)
             {
