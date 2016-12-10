@@ -106,11 +106,11 @@ namespace AramBuddy.MainCore
         {
             var random = new Random();
             int index = random.Next(TylerMsg.Count);
-            Chat.Say(TylerMsg[index]);
+            //Chat.Say(TylerMsg[index]);
 
             if (random.Next(0, 1) == 1)
             {
-                Chat.Say("/ff");
+                //Chat.Say("/ff");
                 Program.Moveto = "RUNNING IT DOWN MID";
                 Pathing.Position = ObjectsManager.EnemySpawn.Position.Random();
                 Pathing.MoveTo(Pathing.Position);
